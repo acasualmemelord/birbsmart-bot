@@ -20,7 +20,8 @@ const voteID = (debugOn) ? '862200905956458497' : '859622377968369704';
 const resultID = (debugOn) ? '862200912856612884' : '862219880223604736';
 const botID = 862200293336809482;
 const useless = ['Illuminate', 'Run Away', 'Honey Gather', 'Ball Fetch'];
-const fscj = ["warning: this fusion is cringe",
+const fscj = [
+"warning: this fusion is cringe",
 "note: i came up with this first, what the fuck is wrong with you",
 "note: this fusion already exists in <#924102338115932160>",
 "Googers",
@@ -32,11 +33,34 @@ const fscj = ["warning: this fusion is cringe",
 "RATIO + JOB + BITCHES + SEEK HELP <:sob:907399357119205446> <:skull:907399357119205446>",
 "L"
 ];
-const images = ["https://media.discordapp.net/attachments/855544880217849876/902218699849728040/61749c8ea9f0d106769608.gif",
+const images = [
+"https://media.discordapp.net/attachments/855544880217849876/902218699849728040/61749c8ea9f0d106769608.gif",
 "https://tenor.com/view/dies-of-cringe-cringe-gif-20747133",
 "https://media.discordapp.net/attachments/823049810922831893/881631457607577620/612be9200adfa577489980.gif",
 "https://media.discordapp.net/attachments/653473781393653800/834984873617784913/BASED.gif",
-"https://cdn.discordapp.com/emojis/792490609058381834.gif?v=1"
+"https://cdn.discordapp.com/emojis/792490609058381834.gif?v=1",
+"https://images-ext-1.discordapp.net/external/N4yHS3z04VF6T6p7Nk5F5N9Yk5460YvcvIPvxngrzSw/https/media.discordapp.net/attachments/493837927722385408/874464854415638579/image0.gif",
+"https://images-ext-2.discordapp.net/external/DhODMbMV4qbWmnkES8C0BWpnJ3C_f87ZF1foy9LKU14/%3Fv%3D1/https/cdn.discordapp.com/emojis/792490609058381834.gif"
+];
+const statuses = [
+	"fusion evolution alpha (am an alpha male)",
+	"fusion evolution beta (am a beta male)",
+	"fusion evolution sigma (am a sigma male)",
+	"fusion evolution omega (am an omega male)",
+	"fusion evolution RU (am an RU male)",
+	"fusion evolution UU (am a UU male)",
+	"SQUID GAMES ‼️",
+	"cracker",
+	"Parasex Enthusiast",
+	"Toxasex Enthusiast",
+	"Genesex Enthusiast",
+	"Shitmontop Enthusiast",
+	"Sexcadrill Enthusiast",
+	"big button is watching",
+	"*DIES FROM CRINGE*",
+	"Based 😤 Based 😤 Baked 🥬",
+	"diagnosis: skill issue",
+	"gato sexo"
 ];
 
 client.on('ready', readyDiscord);
@@ -44,7 +68,7 @@ client.on('message', gotMessage);
 
 function readyDiscord(){
   console.log('in');
-  client.user.setActivity('fusion evolution sigma (am a sigma male)');
+  client.user.setActivity(statuses[Math.floor(Math.random() * (statuses.length - 1))]);
 }
 
 function gotMessage(msg){
@@ -53,6 +77,7 @@ function gotMessage(msg){
   if (msg.content == "!rules") msg.channel.send("**VOTING RULES**\n\nTo vote, type \"!vote \\`\\`\\`\n[the *fusion names* of the mons you are voting for (make sure to spell them correctly), each one separated by a line break]\\`\\`\\`.\nPlease remember the line break after the \`\`\`. Otherwise, your first vote will be cut off.\n\nIf you made a mistake in your voting, simply use the same command but use !changevote instead. Your change request will be reviewed by the council.\n\nhttps://discord.com/channels/822971235645653032/823049256939421706/864033901851443210 Click this link for more details.");
   if (msg.content == "!batr") msg.channel.send("**BATR:** Broken Ability Tightrope\nThe phenomenon where it is practically impossible to balance a mon with a broken ability - either it will be overpowered or underpowered.");
   if (msg.content == "Googers") msg.channel.send("Googers");
+  if (msg.content == "!changestatus") client.user.setActivity(statuses[Math.floor(Math.random() * (statuses.length - 1))]);
   if (msg.content == "!dumb"){
     client.user.setUsername('birbderp bot');
     client.user.setAvatar('https://cdn.discordapp.com/emojis/844332026446217227.png?v=1');
@@ -62,6 +87,12 @@ function gotMessage(msg){
     client.user.setUsername('birbsmart bot');
     client.user.setAvatar('https://cdn.discordapp.com/emojis/844332026853064724.png?v=1');
     msg.channel.send("I'm Smart");
+  }
+  
+  
+  
+  if (regExp.test(/[a-zA-Z]/g) && msg.content == msg.content.toUpperCase()){
+	msg.channel.send("Please no caps. this isn't proper internet language and i absolutely hate. Please no more.");
   }
 
   if(msg.channel.id == 924102338115932160 && msg.content.includes("\`\`\`")){
