@@ -77,7 +77,10 @@ function gotMessage(msg){
   if (msg.content == "!rules") msg.channel.send("**VOTING RULES**\n\nTo vote, type \"!vote \\`\\`\\`\n[the *fusion names* of the mons you are voting for (make sure to spell them correctly), each one separated by a line break]\\`\\`\\`.\nPlease remember the line break after the \`\`\`. Otherwise, your first vote will be cut off.\n\nIf you made a mistake in your voting, simply use the same command but use !changevote instead. Your change request will be reviewed by the council.\n\nhttps://discord.com/channels/822971235645653032/823049256939421706/864033901851443210 Click this link for more details.");
   if (msg.content == "!batr") msg.channel.send("**BATR:** Broken Ability Tightrope\nThe phenomenon where it is practically impossible to balance a mon with a broken ability - either it will be overpowered or underpowered.");
   if (msg.content == "Googers") msg.channel.send("Googers");
-  if (msg.content == "!changestatus") client.user.setActivity(statuses[Math.floor(Math.random() * (statuses.length - 1))]);
+  if (msg.content == "!changestatus"){
+	console.log('status change');
+	client.user.setActivity(statuses[Math.floor(Math.random() * (statuses.length - 1))]);
+  }
   if (msg.content == "!dumb"){
     client.user.setUsername('birbderp bot');
     client.user.setAvatar('https://cdn.discordapp.com/emojis/844332026446217227.png?v=1');
