@@ -94,7 +94,7 @@ function gotMessage(msg){
   
   
   
-  if (regExp.test(/[a-zA-Z]/g) && msg.content == msg.content.toUpperCase()){
+  if (msg.content.length > 1 && regExp.test(/[a-zA-Z]/g) && msg.content == msg.content.toUpperCase()){
 	msg.channel.send("Please no caps. this isn't proper internet language and i absolutely hate. Please no more.");
   }
 
