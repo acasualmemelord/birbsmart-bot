@@ -77,11 +77,10 @@ function gotMessage(msg){
   if (msg.content == "!rules") msg.channel.send("**VOTING RULES**\n\nTo vote, type \"!vote \\`\\`\\`\n[the *fusion names* of the mons you are voting for (make sure to spell them correctly), each one separated by a line break]\\`\\`\\`.\nPlease remember the line break after the \`\`\`. Otherwise, your first vote will be cut off.\n\nIf you made a mistake in your voting, simply use the same command but use !changevote instead. Your change request will be reviewed by the council.\n\nhttps://discord.com/channels/822971235645653032/823049256939421706/864033901851443210 Click this link for more details.");
   if (msg.content == "!batr") msg.channel.send("**BATR:** Broken Ability Tightrope\nThe phenomenon where it is practically impossible to balance a mon with a broken ability - either it will be overpowered or underpowered.");
   if (msg.content == "Googers") msg.channel.send("Googers");
-  if (msg.content == "!changestatus"){
-	console.log('status change');
-	client.user.setActivity(statuses[Math.floor(Math.random() * (statuses.length - 1))]);
-  }
-  if (msg.content == "!dumb"){
+  if (msg.content == "!changestatus") client.user.setActivity(statuses[Math.floor(Math.random() * (statuses.length - 1))]);
+	if (msg.content == "!stretchy") msg.channel.send("https://media.discordapp.net/attachments/823049810922831893/881631457607577620/612be9200adfa577489980.gif");
+	if (msg.content == "!cringe") msg.channel.send("https://tenor.com/view/dies-of-cringe-cringe-gif-20747133");
+	if (msg.content == "!dumb"){
     client.user.setUsername('birbderp bot');
     client.user.setAvatar('https://cdn.discordapp.com/emojis/844332026446217227.png?v=1');
     msg.channel.send("I'm Dumb");
@@ -91,11 +90,9 @@ function gotMessage(msg){
     client.user.setAvatar('https://cdn.discordapp.com/emojis/844332026853064724.png?v=1');
     msg.channel.send("I'm Smart");
   }
-  
-  
-  
-  if (msg.content.length > 1 && regExp.test(/[a-zA-Z]/g) && msg.content == msg.content.toUpperCase()){
-	msg.channel.send("Please no caps. this isn't proper internet language and i absolutely hate. Please no more.");
+
+  if (msg.content.length > 1 && /^[a-z\s]*$/i.test(msg.content) && msg.content == msg.content.toUpperCase()){
+		msg.channel.send("Please no caps. this isn't proper internet language and i absolutely hate. Please no more.");
   }
 
   if(msg.channel.id == 924102338115932160 && msg.content.includes("\`\`\`")){
@@ -157,7 +154,11 @@ function gotMessage(msg){
       voted.push(msg.author.id);
       msg.channel.bulkDelete(1);
       client.channels.cache.get(resultID).send(msg.author.username + ": " + msg.content.substring(6));
-      msg.author.send("Here is your vote:\n\n" + msg.author.username + ": " + msg.content.substring(6));
+			try {
+				msg.author.send("Here is your vote:\n\n" + msg.author.username + ": " + msg.content.substring(6));
+			} catch (error) {
+				console.log("note: " + msg.author + " was not sent their vote because their DMs are restricted.");
+			}
       vote = [msg.author.username, msg.content.substring(10, msg.content.length - 3).split("\n")];
       votes.push(vote);
       msg.reply("your vote was received");
@@ -217,6 +218,7 @@ function gotMessage(msg){
       }
 
       msg.channel.send(result);
+			msg.author.send("In case the bot cycles and the votes are lost, here are the votes so you can load them again:\n\n" + votes);
     }
 
     //// DEBUG
